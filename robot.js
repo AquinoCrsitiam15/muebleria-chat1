@@ -15,15 +15,19 @@ module.exports = async (rWit, indexChat) => {
         }
     }
 
-    if ( Object.keys(resJson).length !== 0 ) {
+    if (resJson && Object.keys(resJson).length !== 0 ) {
         if ( false ) {
+            console.log('aqui es');
             robotRes = resJson["any"];
         } else {
             robotRes = resJson["any"];
             if ( typeof robotRes === "string" ) {
-                // No hacer nada
+                console.log('String');
+                robotRes = resJson["any"];
             } else if ( typeof robotRes === "function" ) {
+                console.log('funcionaqui');
                 robotRes = robotRes();
+                //robotRes = resJson["any"]();
             }
         }
     }

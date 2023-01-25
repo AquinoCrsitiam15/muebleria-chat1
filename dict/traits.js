@@ -1,5 +1,8 @@
 const https = require("https");
 const axios = require("axios");
+const { Http2ServerResponse } = require("http2");
+const { header } = require("express/lib/request");
+const { url } = require("inspector");
 
 module.exports = async () => {
   return {
@@ -11,6 +14,14 @@ module.exports = async () => {
       "dialogar": {
         "any": "Gracias por escribirnos, soy Bot y le ayudare!",
         "despido": "Gracias por escribirnos, nos vemos pronto."
+      },
+      "consulta_muebles": {
+        "any": "Usted seria muy amable de comunicarse con el gerente o apersonarse a las instalaciones de la empresa.",
+        "despido": "Gracias por escribirnos, nos vemos pronto."
+      },
+      "descuentos": {
+        "any": "Usted seria muy amable de comunicarse con el gerente o apersonarse a las instalaciones de la empresa.",
+        "despido": "Gracias por escribirnos, nos vemos pronto."
       }
     },
     "trato_buscar": {
@@ -20,17 +31,25 @@ module.exports = async () => {
                   "despido"],
         "saludo": "Sugiero ver las ofertas de escritorio.",
         "despido": "Gracias por escribirnos, avisenos si desea algo mas.",
-        "any": async function() {
+        "any": async function(ints, ents) {
           // Aqui consultar a mysql
           // Consultar a una API
-          /* let {data} = await axios.get("https://fipo.equisd.com/api/products.json");
-          let result = (data["objects"].slice(0, 3).map((e) => {
-              return `<div class="product-item"><a target="_blank" href='https://google.com'><img width="32" src='${e.avatar}'> ${e.name}</a></div>`;
-          })).join("");
-          return `Claro, puedo sugerirte los siguientes productos: ${result}`; */
-          let productos = ['Mesas', 'Sillas', 'Escritorio'];
-          return productos;
+
+          let {data} = await axios.get("https://apimueblesoscanoa.azurewebsites.net/api/webpagina/Categorias")
+          let categoria = (data["result"].slice(0, data["result"].length).map((e) => {
+              return `${e.nombre}, `;
+          })).join(" ");
+          return `Nuestra empresa es expendedora de una gran variedad de muebles en los que encontramos : ${categoria} sugerimos que 
+          darle una visita completa a la pagina web y encontrar la mejor opcion para usted.`;
         }
+      },
+      "producto_especifico": {
+        "any": "Sugiero que le de una visita a los productos de acuerdo a la categoria que desee",
+        "despido": "Gracias por escribirnos, avisenos si desea algo mas."
+      },
+      "precio": {
+        "any": "Todos los precios son visibles en la pagina web",
+        "despido": "Gracias por escribirnos, avisenos si desea algo mas."
       }
     }
   };

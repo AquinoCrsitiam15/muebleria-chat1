@@ -2,7 +2,9 @@ const {Wit, log} = require("node-wit");
 
 const witClient = new Wit({
     //! TOKEN DEL WIT
-    accessToken: "RJNQHCG5JPHW2AZD4ARUZD543NP42ZN4",
+    accessToken: //"MGLNHQQSWMCRQAD54ITOGFNVUED4GUWX"
+    "RJNQHCG5JPHW2AZD4ARUZD543NP42ZN4"
+    ,
     logger: new log.Logger(log.DEBUG)
 });
 
