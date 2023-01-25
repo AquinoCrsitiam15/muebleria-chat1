@@ -26,7 +26,7 @@ module.exports = async (rWit, indexChat) => {
                 robotRes = resJson["any"];
             } else if ( typeof robotRes === "function" ) {
                 console.log('funcionaqui');
-                robotRes = robotRes();
+                robotRes = resJson["any"];
                 //robotRes = resJson["any"]();
             }
         }
