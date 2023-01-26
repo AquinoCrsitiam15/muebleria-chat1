@@ -4,7 +4,7 @@ WORKDIR /usr/srs/app
 
 COPY . .
 
-RUN npm install ci
+RUN npm ci
 
 EXPOSE 7000
 
