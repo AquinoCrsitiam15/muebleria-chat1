@@ -17,17 +17,13 @@ module.exports = async (rWit, indexChat) => {
 
     if (resJson && Object.keys(resJson).length !== 0 ) {
         if ( false ) {
-            console.log('aqui es');
             robotRes = resJson["any"];
         } else {
             robotRes = resJson["any"];
             if ( typeof robotRes === "string" ) {
-                console.log('String');
                 robotRes = resJson["any"];
             } else if ( typeof robotRes === "function" ) {
-                console.log('funcionaqui');
                 robotRes = resJson["any"]();
-                //robotRes = resJson["any"]();
             }
         }
     }
