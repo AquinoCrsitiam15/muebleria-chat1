@@ -4,13 +4,17 @@ const { Http2ServerResponse } = require("http2");
 const { header } = require("express/lib/request");
 const { url } = require("inspector");
 
-const numero = 999999999;
 
 module.exports = async () => {
   return {
     "trato_dialogo": {
       "comunicar gerente": {
-        "any": "Claro, puedes realizarlo por medio de WhatsApp o realizar una llamada al numero "+numero+".",
+        "any": async function(ints, ents) {
+          return `Claro, puedes realizarlo por medio de WhatsApp o realizar una llamada a cualquiera de los siguientes numeros: <br>
+            - 973 080 346 <br>
+            - 922 309 422 <br>
+            - 964 677 870`;
+        },
         "despido": "Gracias por escribirnos, nos vemos pronto."
       },
       "dialogar": {
@@ -22,15 +26,25 @@ module.exports = async () => {
         "despido": "Gracias por escribirnos, nos vemos pronto."
       },
       "negocios": {
-        "any": "Gracias por escribirnos, para realizar negocios con usted, porfavor apersonese al local o comuniquese con el administrador con el numero "+numero+".",
+        "any": async function(ints, ents) {
+          return `Gracias por escribirnos, para realizar negocios con usted, porfavor apersonese al local o comuniquese por uno de estos numeros: <br>
+            - 973 080 346 <br>
+            - 922 309 422 <br>
+            - 964 677 870`;
+        },
         "despido": "Gracias por escribirnos, nos vemos pronto."
       },
       "garantia": {
-        "any": "La garantia de los muebles de la empresa tiene una valides de un mes, le sugiero que se comunique al numero "+numero+",el gerente los atendera para mas detalles.",
+        "any": async function(ints, ents) {
+          return `La garantia de los muebles de la empresa tiene una valides de un mes, le sugiero que se comunique con nosotros por uno de estos numeros para mas detalles: <br>
+            - 973 080 346 <br>
+            - 922 309 422 <br>
+            - 964 677 870`;
+        },
         "despido": "Gracias por escribirnos, nos vemos pronto."
       },
       "descuentos": {
-        "any": "Los descuentos se realizan en ocaciones especiales como: en el aniversario de la empresa, navidad y en tu cumpleaños si erer un cliente recurrente.",
+        "any": "Los descuentos se realizan en ocaciones especiales como: en el aniversario de la empresa, navidad y en tu cumpleaños si usted es un cliente recurrente.",
         "despido": "Gracias por escribirnos, nos vemos pronto."
       },
       "pagos": {
@@ -100,7 +114,13 @@ module.exports = async () => {
     },
     "trato_queja": {
       "queja": {
-        "any": "Gracias por contactarnos, estaremos mejorando nuestra atención, para mejor comunicacion por favor contactese con el Administrador por medio del WhatsApp o llamada al siguiente numero 999999999, quien gustosamente lo atendera o apersonese al local para presentar la queja.",
+        "any": async function(ints, ents) {
+          return `Gracias por contactarnos, estaremos mejorando nuestra atención, para mejor comunicacion por favor 
+          contactese con nosotros por medio del WhatsApp o llamada por los siguientes numeros: <br>
+            - 973 080 346 <br>
+            - 922 309 422 <br>
+            - 964 677 870`;
+        },
         "despido": "Gracias por escribirnos, avisenos si desea algo mas.",
       },
       "devolucion": {
