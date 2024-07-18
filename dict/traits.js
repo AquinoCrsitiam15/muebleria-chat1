@@ -60,7 +60,7 @@ module.exports = async () => {
           // Aqui consultar a mysql
           // Consultar a una API
 
-          let {data} = await axios.get("https://apimueblesoscanoa.azurewebsites.net/api/webpagina/Categorias")
+          let {data} = await axios.get("https://muebleriaoscanoawebapp.azurewebsites.net/api/categorialibre")
           let categoria = (data["result"].slice(0, data["result"].length).map((e) => {
               return `${e.nombre}, `;
           })).join(" ");
@@ -81,7 +81,7 @@ module.exports = async () => {
           // Aqui consultar a mysql
           // Consultar a una API
 
-          let {data} = await axios.get("https://apimueblesoscanoa.azurewebsites.net/api/webpagina/Categorias")
+          let {data} = await axios.get("https://muebleriaoscanoawebapp.azurewebsites.net/api/categorialibre")
           let categoria = (data["result"].slice(0, data["result"].length).map((e) => {
             return `
             <a class="nav-link link-primary " href="/products#categories" onclick="cargarporcategoria(${e})">
@@ -96,7 +96,7 @@ module.exports = async () => {
       },
       "producto especifico": {
         "any": async function(ints, ents) {
-          let {data} = await axios.get("https://apimueblesoscanoa.azurewebsites.net/api/webpagina/Categorias")
+          let {data} = await axios.get("https://muebleriaoscanoawebapp.azurewebsites.net/api/categorialibre")
           let categoria = (data["result"].slice(0, data["result"].length).map((e) => {
             return `${e.nombre}, `;
           })).join(" ");
